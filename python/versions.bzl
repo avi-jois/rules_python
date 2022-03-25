@@ -52,6 +52,7 @@ TOOL_VERSIONS = {
             "aarch64-apple-darwin": "ad66c2a3e7263147e046a32694de7b897a46fb0124409d29d3a93ede631c8aee",
             "x86_64-apple-darwin": "fdaf594142446029e314a9beb91f1ac75af866320b50b8b968181e592550cd68",
             "x86_64-pc-windows-msvc": "5bc65ce023614bf496a6748e41dca934b70fc5fac6dfacc46aa8dbcad772afc2",
+            "aarch64-unknown-linux-gnu": "12dd1f125762f47975990ec744532a1cf3db74ad60f4dfb476ca42deb7f78ca4",
             "x86_64-unknown-linux-gnu": "455089cc576bd9a58db45e919d1fc867ecdbb0208067dffc845cc9bbf0701b70",
         },
         "strip_prefix": "python",
@@ -62,6 +63,7 @@ TOOL_VERSIONS = {
             "aarch64-apple-darwin": "1409acd9a506e2d1d3b65c1488db4e40d8f19d09a7df099667c87a506f71c0ef",
             "x86_64-apple-darwin": "8146ad4390710ec69b316a5649912df0247d35f4a42e2aa9615bffd87b3e235a",
             "x86_64-pc-windows-msvc": "a293c5838dd9c8438a84372fb95dda9752df63928a8a2ae516438f187f89567d",
+            "aarch64-unknown-linux-gnu": "8f351a8cc348bb45c0f95b8634c8345ec6e749e483384188ad865b7428342703",
             "x86_64-unknown-linux-gnu": "9b64eca2a94f7aff9409ad70bdaa7fbbf8148692662e764401883957943620dd",
         },
         "strip_prefix": "python",
@@ -85,6 +87,14 @@ PLATFORMS = {
         # Matches the value returned from:
         # repository_ctx.execute(["uname", "-m"]).stdout.strip()
         arch = "arm64",
+    ),
+    "aarch64-unknown-linux-gnu": struct(
+        compatible_with = [
+            "@platforms//os:linux",
+            "@platforms//cpu:aarch64",
+        ],
+        os_name = LINUX_NAME,
+        arch = "aarch64",
     ),
     "x86_64-apple-darwin": struct(
         compatible_with = [
